@@ -1,0 +1,38 @@
+function doPost(e) {
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("wishlist");
+    
+    if (!sheet) {
+      return ContentService
+        .createTextOutput(JSON.stringify({ success: false, error: "Sheet not found" }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
+    var data = JSON.parse(e.postData.contents);
+    var email = data.email;
+
+    if (!email || !validateEmail(email)) {
+      return ContentService
+        .createTextOutput(JSON.stringify({ success: false, error: "Invalid email" }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
+    var createdAt = new Date();
+
+    sheet.appendRow([email, createdAt]);
+
+    return ContentService
+      .createTextOutput(JSON.stringify({ success: true }))
+      .setMimeType(ContentService.MimeType.JSON);
+
+  } catch (err) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ success: false, error: err.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+function validateEmail(email) {
+  var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
+}

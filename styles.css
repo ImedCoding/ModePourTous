@@ -1,0 +1,346 @@
+:root {
+  color-scheme: light;
+  --ink: #111111;
+  --ivory: #f5f1ea;
+  --stone: #d6cec4;
+  --sand: #c2b6a3;
+  --terracotta: #b66a4a;
+  --gold: #c4a264;
+  --cloud: #ffffff;
+  --shadow: 0 20px 60px rgba(17, 17, 17, 0.12);
+  --radius: 22px;
+  --radius-soft: 14px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--ink);
+  background: linear-gradient(160deg, #fdfbf7 0%, #f4efe7 60%, #f8f3ec 100%);
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  padding: 2.5rem 6vw 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.page::before,
+.page::after {
+  content: "";
+  position: absolute;
+  width: 460px;
+  height: 460px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196, 162, 100, 0.22), transparent 70%);
+  z-index: 0;
+}
+
+.page::before {
+  top: -120px;
+  right: -120px;
+}
+
+.page::after {
+  bottom: -160px;
+  left: -120px;
+  background: radial-gradient(circle, rgba(182, 106, 74, 0.2), transparent 70%);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.logo {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.nav-cta {
+  text-decoration: none;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 0.2rem;
+  font-weight: 500;
+}
+
+.section {
+  position: relative;
+  z-index: 1;
+  animation: rise 0.8s ease both;
+}
+
+.section h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.8rem, 2.6vw, 2.6rem);
+  margin-bottom: 1.5rem;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  color: var(--terracotta);
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.6rem, 5vw, 4.6rem);
+  margin: 0 0 1rem;
+}
+
+.lead {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 540px;
+}
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.8rem;
+}
+
+.cta input {
+  flex: 1 1 220px;
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius-soft);
+  border: 1px solid var(--stone);
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.cta button {
+  padding: 0.9rem 1.6rem;
+  border-radius: var(--radius-soft);
+  border: none;
+  background: var(--ink);
+  color: var(--cloud);
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+
+.note {
+  color: #5a544d;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.hero-visual {
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.card {
+  background: var(--cloud);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+  box-shadow: var(--shadow);
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.card span {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+
+.line {
+  height: 6px;
+  background: linear-gradient(90deg, var(--stone), transparent);
+  border-radius: 99px;
+}
+
+.line.short {
+  width: 60%;
+}
+
+.material .swatch {
+  height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(120deg, #efe6dc, #e0d2bf);
+}
+
+.material .swatch:last-child {
+  background: linear-gradient(120deg, #d7c6b0, #bca58d);
+}
+
+.atelier .grid {
+  flex: 1;
+  border-radius: 16px;
+  background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+    linear-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.steps {
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+.steps article,
+.value-grid article {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(214, 206, 196, 0.6);
+  border-radius: var(--radius);
+  padding: 1.3rem;
+}
+
+.steps h3 {
+  margin-top: 0;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+}
+
+.process-list {
+  margin: 0;
+  padding-left: 1.4rem;
+  display: grid;
+  gap: 0.9rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.pill-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.pill-grid span {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--stone);
+  background: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+}
+
+.value-grid {
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.value-grid h3 {
+  margin-top: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.3rem;
+}
+
+.cta-final .cta-panel {
+  background: linear-gradient(140deg, rgba(17, 17, 17, 0.95), rgba(17, 17, 17, 0.85));
+  color: var(--cloud);
+  border-radius: calc(var(--radius) + 6px);
+  padding: 2.5rem;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.cta-final .cta-panel p {
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+}
+
+.cta-final .cta input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--cloud);
+}
+
+.cta-final .cta button {
+  background: var(--gold);
+  color: #1b140b;
+}
+
+.footer {
+  text-align: center;
+  color: #6d655c;
+  font-size: 0.9rem;
+  padding-bottom: 1rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 720px) {
+  .page {
+    padding: 2rem 6vw 2.5rem;
+  }
+
+  .nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .hero {
+    margin-top: 0;
+  }
+
+  .cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
